@@ -1,5 +1,6 @@
 # Final Project Server File
 
+source("PokemonMap.R")
 
 my.server <- function(input, output) {
   
@@ -42,6 +43,8 @@ my.server <- function(input, output) {
   })
   
  
-
+  output$pokemon.map <- renderLeaflet({
+    return(kanto.region)
+  })
   
 }  

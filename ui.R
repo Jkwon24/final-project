@@ -1,7 +1,9 @@
 # Final Project UI Code
 
 my.ui <- fluidPage(
-  
+  tags$head(
+    tags$style(HTML(".leaflet-container { background: #ffffff; }"))
+  ),
   titlePanel("Pokemon Data API Exploration Shiny Application"),
   sidebarLayout(
     # Sidebar Widgets
@@ -53,8 +55,8 @@ my.ui <- fluidPage(
         tabPanel("Table or Map 3 [Karan]"
                 
                  ),
-        tabPanel("Map [Andrew]"
-                 
+        tabPanel("Kanto Map",
+                 leafletOutput("pokemon.map")
                 )
       )
     ) 
