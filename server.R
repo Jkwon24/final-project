@@ -1,6 +1,7 @@
 # Final Project Server File
 
 source("PokemonMap.R")
+map.plots <- read.csv("data/pokemonMap.csv", stringsAsFactors = FALSE)
 
 my.server <- function(input, output) {
   
@@ -32,19 +33,10 @@ my.server <- function(input, output) {
   
   #------------------------------------------------------#
   
-  
-  
-  
-  # Reactive input for slider, adds "yr" to begining to help filter with DPLYR
-  slider.reactive <- reactive({
-    filter.value <- input$SliderYear
-    filter.value.string <- paste0("YR", filter.value)
-    return(filter.value.string)
-  })
-  
  
-  output$pokemon.map <- renderLeaflet({
+  output$pokemon.map <- renderPlot({
+    kanto.region <- ggplot(map.plots, aes(x = x, y = y)) +
+      geom_polygon(aes(fill = location_type, group = group))
     return(kanto.region)
   })
-  
 }  

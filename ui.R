@@ -73,7 +73,7 @@ my.ui <- fluidPage(theme = shinytheme("darkly"),
     
     
     tabPanel("Kanto Map",
-             leafletOutput("pokemon.map")
+             plotOutput("pokemon.map")
     )
   )
 ) 
