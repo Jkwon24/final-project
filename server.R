@@ -1,6 +1,6 @@
 # Final Project Server File
 
-source("PokemonMap.R")
+source("data/PokemonMap.R")
 map.plots <- read.csv("data/pokemonMap.csv", stringsAsFactors = FALSE)
 
 my.server <- function(input, output) {
