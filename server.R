@@ -5,7 +5,7 @@ library("imager")
 
 
 source("KantoRegion.R")
-source("PokemonAPI.R")
+source("BaseStats.R")
 map.plots <- read.csv("data/pokemonMap.csv", stringsAsFactors = FALSE)
 pokemonTypes <- read.csv("data/PokemonTypes.csv", stringsAsFactors = FALSE)
 pokemonInfo <- read.csv("data/PokemonInfo.csv", stringsAsFactors = FALSE)
