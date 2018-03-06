@@ -1,13 +1,10 @@
 # Final Project Server File
+library("dplyr")
 
-<<<<<<< HEAD
-source("data/PokemonMap.R")
+
+source("KantoRegion.R")
 map.plots <- read.csv("data/pokemonMap.csv", stringsAsFactors = FALSE)
 
-=======
-source("PokemonMap.R")
-library("dplyr")
->>>>>>> 6e7c3b6bef30c3f8d487cbc6f4e67a3609756cb7
 my.server <- function(input, output) {
   
   pokemonInfo <- read.csv("data/PokemonInfo.csv")
@@ -61,21 +58,10 @@ my.server <- function(input, output) {
     return
     
   })
-  
-  
-<<<<<<< HEAD
  
   output$pokemon.map <- renderPlot({
     kanto.region <- ggplot(map.plots, aes(x = x, y = y)) +
       geom_polygon(aes(fill = location_type, group = group))
-=======
-  
-  
-  
-  
-  output$pokemon.map <- renderLeaflet({
->>>>>>> 6e7c3b6bef30c3f8d487cbc6f4e67a3609756cb7
-    return(kanto.region)
   })
 }  
 
