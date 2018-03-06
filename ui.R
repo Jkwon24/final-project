@@ -1,7 +1,16 @@
 # Final Project UI Code
+
+
 library("shinythemes")
+library("ggplot2")
+library("leaflet")
+library("png")
+library("imager")
+
+pokemonInfo <- read.csv("data/PokemonInfo.csv")
 
 my.ui <- fluidPage(theme = shinytheme("darkly"),
+                   
   tags$head(
     tags$style(HTML(".leaflet-container { background: #ffffff; }"))
   ),
@@ -13,28 +22,22 @@ my.ui <- fluidPage(theme = shinytheme("darkly"),
              sidebarLayout(
                # Sidebar Widgets
                sidebarPanel(
-                 h2("Table Interactivity Tools"),
                  
-                 # Use the slider for something (only show a generation, or X amount of values)
-                 sliderInput("SliderValue", "Slider [Potential Widget",
-                             min = 0, # THESE VALUES ARE ARBITRARY 
-                             max = 50,
-                             value = 0
-                 ),
+                 h2("Pokemon Search!"),
+                 textInput("PokemonName", "Please Enter a Pokemon Name"),
                  
-                 # Perhaps you can search for a specific pokemon
-                 textInput("PokemonName", "Text Input Widget"),
+                 h2("Move Search"),
+                 textInput("MoveName", "Please Enter a Move Name"),
                  
-                 #ADD MORE WIDGETS HERE ONCE YOU HAVE THE TABLE MADE
+                 h2("Filter by Pokemon Type"),
+                 selectInput("typeName", "Type of Pokemon", 
+                             c("fire", "water", "poision", "grass", "flying", 
+                               "bug", "normal", "electric", "ground", "fairy",
+                               "grass", "fighting", "psychic", "rock", "Steel",
+                               "ice", "dragon")
+                 )
                  
-                 selectInput("Generation","Please Select Generation to Parse [Conner]",
-                             c("Gen1",
-                               "Gen2",
-                               "Gen3",
-                               "Gen4",
-                               "Gen5",
-                               "Gen6"
-                             ))
+                 
                ),
                
                
@@ -44,13 +47,21 @@ my.ui <- fluidPage(theme = shinytheme("darkly"),
                
                
                mainPanel(
-                 h2("Pokemon Generation Data")
+                 h2("Pokemon Database Information Panel"),
+                 
+                 # Lets me show them what they are typing in inside my panel + makes reactive
+                 h3("Showing information on:"),
+                 chosenPokemon <- textOutput("pokemon"),
+                 #print(pokemon.NameReactive)
+                 tableOutput("filteredTable"),
+                 tableOutput("moveTable"),
+                 
+                 htmlOutput("pokemonImage")
+                 
+                 
+                 
                ) 
-             ),
-             
-             # Lets me show them what they are typing in inside my panel + makes reactive
-             textOutput("pokemon")
-             # Goal: Let User input
+             )
     ),
     
     
@@ -60,18 +71,48 @@ my.ui <- fluidPage(theme = shinytheme("darkly"),
              
     ),
     
+    ##################################
+    ##### Workspace for Karan ########
+    ##################################
     
-    
-    
-    
-    tabPanel("Table or Map 3 [Karan]"
-             
+    tabPanel("Pokemon Search",
+      h1("Pokemon Search!"),
+      
+      sidebarLayout(
+        sidebarPanel(
+          selectInput("typeDropdown", "Choose a type:",
+                      c('Flying' = "flying",   
+                        'Dragon' = "dragon",
+                        'Normal' = "normal",
+                        'Water' = "water",
+                        'Rock' = "rock",
+                        'Fire' = "fire",
+                        'Electric' = "electric",
+                        'Psychic' = "psychic",
+                        'Ice' = "ice",
+                        'Fairy' = "fairy",
+                        'Ground' = "ground",
+                        'Poison' = "poison",
+                        'Fighting' = "fighting",
+                        'Grass' = "grass",
+                        'Ghost' = "ghost",
+                        'Steel' = "steel",
+                        'Bug' = "bug")
+          )
+        ),
+        
+        mainPanel(
+          textOutput("tableMessage"),
+          tableOutput("tableOutput")
+        )
+      )
     ),
     
+    ##################################
+    #### Workspace end for Karan #####
+    ##################################
     
     
-    
- 
     tabPanel("Kanto Map",
              sidebarLayout(
                sidebarPanel(
@@ -84,7 +125,6 @@ my.ui <- fluidPage(theme = shinytheme("darkly"),
              )
     )
   )
-) 
-
+)        
 
 shinyUI(my.ui)
