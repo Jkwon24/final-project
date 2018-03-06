@@ -67,6 +67,3 @@ write.csv(pokemonTypes, file = "data/PokemonTypes.csv")
 moves <- read.csv("data/moves.csv")
 moves <- filter(moves, generation_id == 1)
 write.csv(moves, file = "moves.csv")
-
-
-

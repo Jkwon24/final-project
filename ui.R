@@ -4,6 +4,8 @@
 library("shinythemes")
 library("ggplot2")
 library("leaflet")
+library("png")
+library("imager")
 
 pokemonInfo <- read.csv("data/PokemonInfo.csv")
 
@@ -20,10 +22,13 @@ my.ui <- fluidPage(theme = shinytheme("darkly"),
              sidebarLayout(
                # Sidebar Widgets
                sidebarPanel(
+                 
                  h2("Pokemon Search!"),
                  textInput("PokemonName", "Please Enter a Pokemon Name"),
+                 
                  h2("Move Search"),
                  textInput("MoveName", "Please Enter a Move Name"),
+                 
                  h2("Filter by Pokemon Type"),
                  selectInput("typeName", "Type of Pokemon", 
                              c("fire", "water", "poision", "grass", "flying", 
@@ -66,16 +71,46 @@ my.ui <- fluidPage(theme = shinytheme("darkly"),
              
     ),
     
+    ##################################
+    ##### Workspace for Karan ########
+    ##################################
     
-    
-    
-    
-    tabPanel("Table or Map 3 [Karan]"
-             
+    tabPanel("Pokemon Search",
+      h1("Pokemon Search!"),
+      
+      sidebarLayout(
+        sidebarPanel(
+          selectInput("typeDropdown", "Choose a type:",
+                      c('Flying' = "flying",   
+                        'Dragon' = "dragon",
+                        'Normal' = "normal",
+                        'Water' = "water",
+                        'Rock' = "rock",
+                        'Fire' = "fire",
+                        'Electric' = "electric",
+                        'Psychic' = "psychic",
+                        'Ice' = "ice",
+                        'Fairy' = "fairy",
+                        'Ground' = "ground",
+                        'Poison' = "poison",
+                        'Fighting' = "fighting",
+                        'Grass' = "grass",
+                        'Ghost' = "ghost",
+                        'Steel' = "steel",
+                        'Bug' = "bug")
+          )
+        ),
+        
+        mainPanel(
+          textOutput("tableMessage"),
+          tableOutput("tableOutput")
+        )
+      )
     ),
     
-    
-    
+    ##################################
+    #### Workspace end for Karan #####
+    ##################################
     
     
     tabPanel("Kanto Map",
