@@ -41,8 +41,10 @@ rattata,Route 9,19
 rattata,Route 17,19
 rattata,Route 18,19
 rattata,Route 22,19
+rattata,Cinnabar Island,19
 raticate,Route 17,20
 raticate,Route 18,20
+raticate,Cinnabar Island,20
 spearow,Route 3,21
 spearow,Route 4,21
 spearow,Route 9,21
@@ -74,11 +76,11 @@ sandshrew,Route 11,27
 sandshrew,Route 22,27
 sandshrew,Route 23,27
 sandslash,Route 23,28
-nidoran-f,Route 3,29
+nidoran-f,Route 22,29
 nidoran-f,Safari Zone,29
 nidorina,Safari Zone,30
 nidoqueen,Unknown,31
-nidoran-m,Route 3,32
+nidoran-m,Route 22,32
 nidoran-m,Safari Zone,32
 nidorino,Safari Zone,33
 nidoking,Unknown,34
@@ -86,6 +88,7 @@ clefairy,Route 4,35
 clefable,Unknown,36
 vulpix,Route 7,37
 vulpix,Route 8,37
+vulpix,Cinnabar Island,37
 ninetales,Unknown,38
 jigglypuff,Route 3,39
 wigglytuff,Unknown,40
@@ -150,3 +153,233 @@ mankey,Route 10,56
 mankey,Route 22,56
 mankey,Route 23,56
 primeape,Route 23,57
+growlithe,Route 7,58
+growlithe,Route 8,58
+growlithe,Cinnabar Island,58
+arcanine,Unknown,59
+poliwag,Route 4,60
+poliwag,Route 6,60
+poliwag,Route 22,60
+poliwag,Route 23,60
+poliwag,Route 25,60
+poliwag,Safari Zone,60
+poliwhirl,Route 4,61
+poliwhirl,Route 6,61
+poliwhirl,Route 22,61
+poliwhirl,Route 23,61
+poliwhirl,Route 25,61
+poliwrath,Unknown,62
+abra,Route 24,63
+abra,Route 25,63
+kadabra,Route 4,64
+alakazam,Unknown,65
+machop,Route 10,66
+machop,Route 23,66
+machoke,Route 4,67
+machoke,Route 23,67
+machamp,Unknown,68
+bellsprout,Route 5,69
+bellsprout,Route 6,69
+bellsprout,Route 7,69
+bellsprout,Route 12,69
+bellsprout,Route 13,69
+bellsprout,Route 14,69
+bellsprout,Route 15,69
+bellsprout,Route 24,69
+bellsprout,Route 25,69
+weepinbell,Route 12,70
+weepinbell,Route 13,70
+weepinbell,Route 14,70
+weepinbell,Route 15,70
+victreebel,Unknown,71
+tentacool,Route 4,72
+tentacool,Route 10,72
+tentacool,Route 11,72
+tentacool,Route 12,72
+tentacool,Route 13,72
+tentacool,Route 14,72
+tentacool,Route 19,72
+tentacool,Route 20,72
+tentacool,Route 21,72
+tentacool,Route 24,72
+tentacruel,Unknown,73
+geodude,Route 4,74
+geodude,Route 10,74
+geodude,Route 23,74
+graveler,Route 4,75
+golem,Unknown,76
+ponyta,Cinnabar Island,77
+rapidash,Unknown,78
+slowpoke,Safari Zone,79
+slowpoke,Route 4,79
+slowpoke,Route 6,79
+slowpoke,Route 10,79
+slowpoke,Route 11,79
+slowpoke,Route 12,79
+slowpoke,Route 13,79
+slowpoke,Route 19,79
+slowpoke,Route 20,79
+slowpoke,Route 21,79
+slowpoke,Route 22,79
+slowpoke,Route 23,79
+slowpoke,Route 25,79
+slowbro,Route 4,80
+slowbro,Route 20,80
+magnemite,Route 10,81
+magneton,Route 4,82
+magneton,Route 10,82
+farfetchd,Unknown,83
+farfetch'd,Unknown,83
+doduo,Route 16,84
+doduo,Route 17,84
+doduo,Route 18,84
+doduo,Safari Zone,84
+dodrio,Unknown,85
+seel,Route 20,86
+dewgong,Route 20,87
+grimer,Cinnabar Island,88
+muk,Cinnabar Island,89
+shellder,Route 25,90
+shellder,Cinnabar Island,90
+shellder,Pallet Town,90
+cloyster,Unknown,91
+gastly,Lavender Town,92
+haunter,Lavender Town,93
+gengar,Unknown,94
+onix,Route 10,95
+onix,Route 23,95
+drowzee,Route 11,96
+drowzee,Route 11,96
+hypno,Unknown,97
+krabby,Route 4,98
+krabby,Route 10,98
+krabby,Route 11,98
+krabby,Route 12,98
+krabby,Route 13,98
+krabby,Route 19,98
+krabby,Route 20,98
+krabby,Route 21,98
+krabby,Route 24,98
+krabby,Route 25,98
+krabby,Cinnabar Island,98
+krabby,Lavender Town,98
+krabby,Pallet Town,98
+krabby,Cerulean City,98
+kingler,Route 19,99
+kingler,Route 20,99
+kingler,Route 21,99
+kingler,Route 25,99
+kingler,Pallet Town,99
+voltorb,Route 10,100
+electrode,Cerulean City,101
+exeggcute,Safari Zone,102
+exeggutor,Safari Zone,103
+cubone,Lavender Town,104
+marowak,Route 23,105
+hitmonlee,Unknown,106
+hitmonchan,Unknown,107
+lickitung,Unknown,108
+koffing,Celadon City,109
+koffing,Cinnabar Island,109
+weezing,Cinnabar Island,110
+rhyhorn,Safari Zone,111
+rhydon,Unknown,112
+chansey,Safari Zone,113
+tangela,Route 21,114
+kangaskhan,Safari Zone,115
+horsea,Route 3,116
+horsea,Route 4,116
+horsea,Route 10,116
+horsea,Route 11,116
+horsea,Route 12,116
+horsea,Route 13,116
+horsea,Route 19,116
+horsea,Route 20,116
+horsea,Route 21,116
+horsea,Route 24,116
+horsea,Route 25,116
+horsea,Cinnabar Island,116
+horsea,Lavender Town,116
+horsea,Pallet Town,116
+horsea,Cerulean City,116
+seadra,Route 19,117
+seadra,Route 20,117
+seadra,Route 21,117
+seadra,Route 24,117
+seadra,Route 25,117
+seadra,Cerulean City,117
+seadra,Cinnabar Island,117
+seadra,Lavender Town,117
+seadra,Pallet Town,117
+goldeen,Route 6,118
+goldeen,Route 22,118
+goldeen,Route 23,118
+goldeen,Route 25,118
+goldeen,Fuschia City,118
+goldeen,Cerulean City,118
+goldeen,Safari Zone,118
+seaking,Fuschia City,119
+seaking,Safari Zone,119
+staryu,Route 25,120
+staryu,Pallet Town,120
+staryu,Lavender Town,120
+staryu,Cinnabar Island,120
+starmie,Unknown,121
+mr-mime,Unknown,122
+mr. mime,Unknown,122
+mr mime,Unknown,122
+scyther,Safari Zone,123
+jynx,Unknown,124
+electabuzz,Route 10,125
+magmar,Cinnabar Island,126
+pinsir,Safari Zone,127
+tauros,Safari Zone,128
+magikarp,Route 6,129
+magikarp,Route 10,129
+magikarp,Route 12,129
+magikarp,Route 13,129
+magikarp,Route 17,129
+magikarp,Route 18,129
+magikarp,Route 19,129
+magikarp,Route 20,129
+magikarp,Route 21,129
+magikarp,Route 22,129
+magikarp,Route 23,129
+magikarp,Route 24,129
+magikarp,Route 25,129
+magikarp,Pallet Town,129
+magikarp,Viridian City,129
+magikarp,Cerulean City,129
+magikarp,Vermilion City,129
+magikarp,Celadon City,129
+magikarp,Fuschia City,129
+magikarp,Cinnabar Island,129
+magikarp,Cerulean City,129
+magikarp,Safari Zone,129
+gyrados,Unknown,130
+lapras,Unknown,131
+ditto,Route 13,132
+ditto,Route 14,132
+ditto,Route 15,132
+ditto,Route 23,132
+ditto,Cerulean City,132
+eevee,Unknown,133
+vaporeon,Unknown,134
+jolteon,Unknown,135
+flareon,Unknown,136
+porygon,Unknown,137
+omanyte,Unknown,138
+omastar,Unknown,139
+kabuto,Unknown,140
+kabutops,Unknown,141
+aerodactyl,Unknown,142
+snorlax,Route 12,143
+snorlax,Route 16,143
+articuno,Route 20,144
+zapdos,Route 10,145
+moltres,Route 23,146
+dratini,Safari Zone,147
+dragonair,Unknown,148
+dragonite,Unknown,149
+mewtwo,Cerulean City,150
+mew,Unknown,151
