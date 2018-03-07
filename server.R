@@ -1,10 +1,8 @@
 # Final Project Server File
 library("dplyr")
 library("png")
-library("imager")
+#library("imager")
 
-
-source("KantoRegion.R")
 source("BaseStats.R")
 map.plots <- read.csv("data/pokemonMap.csv", stringsAsFactors = FALSE)
 pokemonTypes <- read.csv("data/PokemonTypes.csv", stringsAsFactors = FALSE)
@@ -125,7 +123,9 @@ my.server <- function(input, output) {
     kanto.region <- ggplot() +
       geom_polygon(data = map.plots, aes(x = x, y = y, group = group, fill = location_type)) +
       geom_polygon(data = plot.list.of.location(), aes(x = x, y = y, group = group, fill = location_name)) + 
-      scale_fill_manual(values = c("red", "blue", "green", "#FFFF00", "#FFFF00")) +
+      scale_fill_manual(values = c("red", "blue", "green", "#FFFF00", "#FFFF00", "#FFFF00", "#FFFF00"
+                                   , "#FFFF00", "#FFFF00", "#FFFF00", "#FFFF00", "#FFFF00", "#FFFF00"
+                                   , "#FFFF00", "#FFFF00", "#FFFF00", "#FFFF00", "#FFFF00", "#FFFF00")) +
       coord_quickmap()
     return(kanto.region)
   })

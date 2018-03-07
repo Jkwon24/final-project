@@ -3,17 +3,14 @@
 
 library("shinythemes")
 library("ggplot2")
-library("leaflet")
 library("png")
-library("imager")
+#library("imager")
 
 pokemonInfo <- read.csv("data/PokemonInfo.csv")
 
 my.ui <- fluidPage(theme = shinytheme("darkly"),
                    
-  tags$head(
-    tags$style(HTML(".leaflet-container { background: #ffffff; }"))
-  ),
+
   titlePanel("Pokemon Data"),
   
   tabsetPanel(
@@ -31,7 +28,7 @@ my.ui <- fluidPage(theme = shinytheme("darkly"),
                  
                  h2("Filter by Pokemon Type"),
                  selectInput("typeName", "Type of Pokemon", 
-                             c("fire", "water", "poision", "grass", "flying", 
+                             c("fire", "water", "poison", "grass", "flying", 
                                "bug", "normal", "electric", "ground", "fairy",
                                "grass", "fighting", "psychic", "rock", "Steel",
                                "ice", "dragon")
