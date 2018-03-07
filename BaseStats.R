@@ -66,6 +66,17 @@ colnames(speed)[1] <- "Pokemon ID"
     geom_point(aes(colour = `Base Speed`)))
 
 
+totalValues <- attack$`Base Attack` + defense$`Base Defense` + 
+               special.attack$`Base Special Attack` + 
+               special.defense$`Base Special Defense` +
+               hp$`Base HP` + speed$`Base Speed`
+Average <- totalValues / 6
+
+totalplot <- select(hp, `Pokemon ID`, Name, stat_id, identifier) %>%
+              mutate(Average)
+  
+
+
 
 
 

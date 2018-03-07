@@ -114,7 +114,8 @@ my.ui <- fluidPage(theme = shinytheme("sandstone"),
                                'Defense' = "Defense",
                                'Special Attack' = "Special Attack",
                                'Special Defense' = "Special Defense",
-                               'Speed' = "Speed")
+                               'Speed' = "Speed",
+                               'Average of all Base Stats' = "Average Value")
                  )
                ),
 

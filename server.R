@@ -121,8 +121,10 @@ my.server <- function(input, output) {
       x <- special.attack
     } else if (statsDropdown() == "HP") {
       x <- hp
-    } else {
+    } else if (statsDropdown() == "Speed") {
       x <- speed
+    } else {
+      x <- totalplot
     }
     return(x)
   })
@@ -144,9 +146,12 @@ my.server <- function(input, output) {
     } else if (statsDropdown() == "HP") {
       (statplot <- ggplot(x, aes(`Pokemon ID`, `Base HP`)) +
           geom_point(aes(colour = `Base HP`)))
-    } else {
+    } else if (statsDropdown() == "Speed") {
       (statplot <- ggplot(x, aes(`Pokemon ID`, `Base Speed`)) +
           geom_point(aes(colour = `Base Speed`)))
+    } else {
+      (statplot <- ggplot(x, aes(`Pokemon ID`, `Average`)) +
+         geom_point(aes(colour = `Average`)))
     }
     return(statplot)
   })
@@ -154,7 +159,7 @@ my.server <- function(input, output) {
   output$hover_info <- renderPrint({
     if(!is.null(input$plot_hover)){
       hover=input$plot_hover
-      if (hover$x <= 0) {
+      if (hover$x <= 0 | hover$x >= 152) {
         return("No data here.")
       }
       pokemon.id.plot <- floor(hover$x)
@@ -162,8 +167,8 @@ my.server <- function(input, output) {
       pokemon.name <- filter(data.frame.stat, `Pokemon ID` == pokemon.id.plot)
       names.columns <- colnames(pokemon.name)
       colnames(pokemon.name)[5] <- "stat"
-      if (abs(hover$y - pokemon.name$stat) < 3 ) {
-        return(paste(pokemon.name$Name, names.columns[5], ":", pokemon.name$stat))
+      if (abs(hover$y - pokemon.name$stat) < 6 ) {
+        return(paste(pokemon.name$Name[[1]], names.columns[5], ":", pokemon.name$stat[[1]]))
       } else {
         return("No data here.")
       }
