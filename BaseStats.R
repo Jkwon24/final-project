@@ -19,54 +19,54 @@ st <- st[c(1:906),]
 
 
 hp <- filter(st, stat_id == 1) %>%
-  arrange(desc(base_stat))
-Rankings <- c(1:151)
+  arrange(pokemon_id)
 colnames(hp)[5] <- "Base HP"
-hp <- mutate(hp, Rankings)
-(hpplot <- ggplot(hp, aes(Rankings, `Base HP`)) +
+colnames(hp)[1] <- "Pokemon ID"
+(hpplot <- ggplot(hp, aes(`Pokemon ID`, `Base HP`)) +
     geom_point(aes(colour = `Base HP`)))
 
 
 attack <- filter(st, stat_id == 2) %>%
-  arrange(desc(base_stat))
-Rankings <- c(1:151)
+  arrange(pokemon_id)
 colnames(attack)[5] <- "Base Attack"
-attack <- mutate(attack, Rankings)
-(attackplot <- ggplot(attack, aes(Rankings, `Base Attack`)) +
+colnames(attack)[1] <- "Pokemon ID"
+(attackplot <- ggplot(attack, aes(`Pokemon ID`, `Base Attack`)) +
     geom_point(aes(colour = `Base Attack`)))
 
 
 defense <- filter(st, stat_id == 3) %>%
-  arrange(desc(base_stat))
-Rankings <- c(1:151)
+  arrange(pokemon_id)
 colnames(defense)[5] <- "Base Defense"
-defense <- mutate(defense, Rankings)
-(defenseplot <- ggplot(defense, aes(Rankings, `Base Defense`)) +
+colnames(defense)[1] <- "Pokemon ID"
+(defenseplot <- ggplot(defense, aes(`Pokemon ID`, `Base Defense`)) +
     geom_point(aes(colour = `Base Defense`)))
 
 
 special.defense <- filter(st, stat_id == 5) %>%
-  arrange(desc(base_stat))
-Rankings <- c(1:151)
+  arrange(pokemon_id)
 colnames(special.defense)[5] <- "Base Special Defense"
-special.defense <- mutate(special.defense, Rankings)
-(specialdefenseplot <- ggplot(special.defense, aes(Rankings, `Base Special Defense`)) +
+colnames(special.defense)[1] <- "Pokemon ID"
+(specialdefenseplot <- ggplot(special.defense, aes(`Pokemon ID`, `Base Special Defense`)) +
     geom_point(aes(colour = `Base Special Defense`)))
 
 
 special.attack <- filter(st, stat_id == 4) %>%
-  arrange(desc(base_stat))
-Rankings <- c(1:151)
+  arrange(pokemon_id)
 colnames(special.attack)[5] <- "Base Special Attack"
-special.attack <- mutate(special.attack, Rankings)
-(specialattackplot <- ggplot(special.attack, aes(Rankings, `Base Special Attack`)) +
+colnames(special.attack)[1] <- "Pokemon ID"
+(specialattackplot <- ggplot(special.attack, aes(`Pokemon ID`, `Base Special Attack`)) +
     geom_point(aes(colour = `Base Special Attack`)))
 
 
 speed <- filter(st, stat_id == 6) %>%
-  arrange(desc(base_stat))
-Rankings <- c(1:151)
+  arrange(pokemon_id)
 colnames(speed)[5] <- "Base Speed"
-speed <- mutate(speed, Rankings)
-(speedplot <- ggplot(speed, aes(Rankings, `Base Speed`)) +
+colnames(speed)[1] <- "Pokemon ID"
+(speedplot <- ggplot(speed, aes(`Pokemon ID`, `Base Speed`)) +
     geom_point(aes(colour = `Base Speed`)))
+
+
+
+
+
+

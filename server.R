@@ -98,7 +98,32 @@ my.server <- function(input, output) {
     return(finalTable)
   })
   
+  statsDropdown <- reactive({
+    return(input$statsDropdown)
+  })
   
+  output$plotMessage <- renderText ({
+    return(paste0("This plot shows the base ", gsub('plot', '', statsDropdown()), " for all Pokemon.
+                  This plot is arranged by Ranking on the x-axis, with the highest ranking Pokemon
+                  appearing first and the lowest ranking Pokemon appearing last. Hover over values
+                  in the graph for more information."))
+  })
+  
+  output$plotOutput <- renderPlot({
+    if (statsDropdown() == "Attack") {
+      return(attackplot)
+    } else if (statsDropdown() == "Defense") {
+      return(defenseplot)
+    } else if (statsDropdown() == "Special Defense") {
+      return(specialdefenseplot)
+    } else if (statsDropdown() == "Special Attack") {
+      return(specialattackplot)
+    } else if (statsDropdown() == "HP") {
+      return(hpplot)
+    } else {
+      return(speedplot)
+    }
+  })
   
   
   

@@ -8,8 +8,8 @@ library("png")
 
 pokemonInfo <- read.csv("data/PokemonInfo.csv")
 
-my.ui <- fluidPage(theme = shinytheme("darkly"),
-                   
+my.ui <- fluidPage(
+  shinythemes::themeSelector(),                
 
   titlePanel("Pokemon Data"),
   
@@ -73,7 +73,7 @@ my.ui <- fluidPage(theme = shinytheme("darkly"),
     ##################################
     
     tabPanel("Pokemon Search",
-      h1("Pokemon Search!"),
+      h2("Pokemon Search!"),
       
       sidebarLayout(
         sidebarPanel(
@@ -103,6 +103,26 @@ my.ui <- fluidPage(theme = shinytheme("darkly"),
           tableOutput("tableOutput")
         )
       )
+    ),
+    
+    tabPanel("Base Stats",
+             sidebarLayout(
+               sidebarPanel(
+                 selectInput("statsDropdown", "Choose a stat to view:",
+                             c('HP' = "HP",
+                               'Attack' = "Attack",
+                               'Defense' = "Defense",
+                               'Special Attack' = "Special Attack",
+                               'Special Defense' = "Special Defense",
+                               'Speed' = "Speed")
+                 )
+               ),
+
+               mainPanel(
+                 textOutput("plotMessage"),
+                 plotOutput("plotOutput")
+               )
+             )
     ),
     
     ##################################
