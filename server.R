@@ -5,7 +5,7 @@ library("dplyr")
 my.server <- function(input, output) {
   
   pokemonInfo <- read.csv("data/PokemonInfo.csv")
-  moveInfo <- read.csv("data/PokemonAbilities.csv")
+  moveInfo <- read.csv("data/PokemonMoves.csv")
   
   
   
@@ -18,49 +18,38 @@ my.server <- function(input, output) {
   output$pokemon <- renderText({
     return(pokemonName.reactive())
   })
+  
   #---------------Make a mini-table of data--------------#
-  #table1 <- filter(pokemonInfo, "Name" == pokemonName.reactive)
   
   output$filteredTable <- renderTable({
-    #test.table <- pokemonInfo
     newTable <- filter(pokemonInfo, pokemonInfo[, 3] == pokemonName.reactive())
   })
-  #------------------------------------------------------#
 
-  output$pokemonImage <- renderText({
-    target <- pokemonInfo[1 == pokemonName.reactive(), 4]
-    
-    
-  })
-  
+  #--------------Move Name Search Section--------------#
  
-  
-  #--------------Move Name Reactives In Here--------------#
-  moveName.reactive <- reactive({
+   moveName.reactive <- reactive({
     return(input$MoveName)
   })
   
   # Reactive Pokemon Name for Text Input
-  output$move <- renderText({
-    return(moveName.reactive)
+  output$moveName <- renderText({
+    return(moveName.reactive())
   })
-  #---------------Make a mini-table of data--------------#
+  
+  colnames(moveTable) <- c("A", "B", "C", "D")
+  
   output$moveTable <- renderTable({
+    #colnames(moveTable) <- c("A", "B", "C", "D")
     moveTable <- filter(moveInfo, moveInfo[, 4] == moveName.reactive())
-  })
-  #------------------------------------------------------#
-  
-  
-  typeName.reactive <-reactive({
-    return
     
+    #moveCount <- nrow(moveTable)
+    #moveTable <- filter(moveInfo, moveInfo[, 4] == moveName.reactive())
   })
   
   
-  
-  
-  
-  
+
+  #------------------------------------------------------#
+
   output$pokemon.map <- renderLeaflet({
     return(kanto.region)
   })
