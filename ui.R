@@ -120,7 +120,8 @@ my.ui <- fluidPage(theme = shinytheme("sandstone"),
 
                mainPanel(
                  textOutput("plotMessage"),
-                 plotOutput("plotOutput")
+                 plotOutput("plotOutput", hover = hoverOpts(id = "plot_hover")),
+                 verbatimTextOutput("hover_info")
                )
              )
     ),

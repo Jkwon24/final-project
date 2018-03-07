@@ -109,20 +109,67 @@ my.server <- function(input, output) {
                   in the graph for more information."))
   })
   
-  output$plotOutput <- renderPlot({
+  plotDealingWith <- reactive({
+    x <- data.frame(stringsAsFactors = FALSE)
     if (statsDropdown() == "Attack") {
-      return(attackplot)
+      x <- attack
     } else if (statsDropdown() == "Defense") {
-      return(defenseplot)
+      x <- defense
     } else if (statsDropdown() == "Special Defense") {
-      return(specialdefenseplot)
+      x <- special.defense
     } else if (statsDropdown() == "Special Attack") {
-      return(specialattackplot)
+      x <- special.attack
     } else if (statsDropdown() == "HP") {
-      return(hpplot)
+      x <- hp
     } else {
-      return(speedplot)
+      x <- speed
     }
+    return(x)
+  })
+  
+  output$plotOutput <- renderPlot({
+    x <- plotDealingWith()
+    if (statsDropdown() == "Attack") {
+      (statplot <- ggplot(x, aes(`Pokemon ID`, `Base Attack`)) +
+          geom_point(aes(colour = `Base Attack`)))
+    } else if (statsDropdown() == "Defense") {
+      (statplot <- ggplot(x, aes(`Pokemon ID`, `Base Defense`)) +
+          geom_point(aes(colour = `Base Defense`)))
+    } else if (statsDropdown() == "Special Defense") {
+      (statplot <- ggplot(x, aes(`Pokemon ID`, `Base Special Defense`)) +
+          geom_point(aes(colour = `Base Special Defense`)))
+    } else if (statsDropdown() == "Special Attack") {
+      (statplot <- ggplot(x, aes(`Pokemon ID`, `Base Special Attack`)) +
+          geom_point(aes(colour = `Base Special Attack`)))
+    } else if (statsDropdown() == "HP") {
+      (statplot <- ggplot(x, aes(`Pokemon ID`, `Base HP`)) +
+          geom_point(aes(colour = `Base HP`)))
+    } else {
+      (statplot <- ggplot(x, aes(`Pokemon ID`, `Base Speed`)) +
+          geom_point(aes(colour = `Base Speed`)))
+    }
+    return(statplot)
+  })
+  
+  output$hover_info <- renderPrint({
+    if(!is.null(input$plot_hover)){
+      hover=input$plot_hover
+      if (hover$x <= 0) {
+        return("No data here.")
+      }
+      pokemon.id.plot <- floor(hover$x)
+      data.frame.stat <- plotDealingWith()
+      pokemon.name <- filter(data.frame.stat, `Pokemon ID` == pokemon.id.plot)
+      names.columns <- colnames(pokemon.name)
+      colnames(pokemon.name)[5] <- "stat"
+      if (abs(hover$y - pokemon.name$stat) < 3 ) {
+        return(paste(pokemon.name$Name, names.columns[5], ":", pokemon.name$stat))
+      } else {
+        return("No data here.")
+      }
+    }
+    
+    
   })
   
   
