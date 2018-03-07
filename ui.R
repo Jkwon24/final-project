@@ -8,8 +8,8 @@ library("png")
 
 pokemonInfo <- read.csv("data/PokemonInfo.csv")
 
-my.ui <- fluidPage(
-  shinythemes::themeSelector(),                
+my.ui <- fluidPage(theme = shinytheme("sandstone"),
+                   
 
   titlePanel("Pokemon Data"),
   
