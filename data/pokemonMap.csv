@@ -1,161 +1,161 @@
 x,y,group,location_name,location_type
-0,0,1,Cinnabar Island,~city
-0,1,1,Cinnabar Island,~city
-1,1,1,Cinnabar Island,~city
-1,0,1,Cinnabar Island,~city
-1,0,2,Route 20,~ocean
-1,1,2,Route 20,~ocean
-7,1,2,Route 20,~ocean
-7,0,2,Route 20,~ocean
-6,1,3,Route 19,~route
-6,2,3,Route 19,~route
-7,2,3,Route 19,~route
-7,1,3,Route 19,~route
-0,1,4,Route 21,~ocean
-0,4,4,Route 21,~ocean
-1,4,4,Route 21,~ocean
-1,1,4,Route 21,~ocean
-0,4,5,Pallet Town,~city
-0,5,5,Pallet Town,~city
-1,5,5,Pallet Town,~city
-1,4,5,Pallet Town,~city
-0,5,6,Route 1,~route
-0,7,6,Route 1,~route
-1,7,6,Route 1,~route
-1,5,6,Route 1,~route
-0,7,7,Viridian City,~city
-0,8,7,Viridian City,~city
-1,8,7,Viridian City,~city
-1,7,7,Viridian City,~city
--3,7,8,Route 22,~route
--3,8,8,Route 22,~route
-0,8,8,Route 22,~route
-0,7,8,Route 22,~route
--3,8,9,Route 23,~route
--3,11,9,Route 23,~route
--2,11,9,Route 23,~route
--2,8,9,Route 23,~route
-0,8,10,Route 2,~route
-0,10,10,Route 2,~route
-1,10,10,Route 2,~route
-1,8,10,Route 2,~route
-0,10,11,Pewter City,~city
-0,11,11,Pewter City,~city
-1,11,11,Pewter City,~city
-1,10,11,Pewter City,~city
-1,10,12,Route 3,~route
-1,11,12,Route 3,~route
-4,11,12,Route 3,~route
-4,10,12,Route 3,~route
-3,11,13,Route 4,~route
-3,12,13,Route 4,~route
-8,12,13,Route 4,~route
-8,11,13,Route 4,~route
-8,11,14,Cerulean City,~city
-8,12,14,Cerulean City,~city
-9,12,14,Cerulean City,~city
-9,11,14,Cerulean City,~city
-8,12,15,Route 24,~route
-8,14,15,Route 24,~route
-9,14,15,Route 24,~route
-9,12,15,Route 24,~route
-9,13,16,Route 25,~route
-9,14,16,Route 25,~route
-11,14,16,Route 25,~route
-11,13,16,Route 25,~route
-9,11,17,Route 9,~route
-9,12,17,Route 9,~route
-12,12,17,Route 9,~route
-12,11,17,Route 9,~route
-12,9,18,Route 10,~route
-12,12,18,Route 10,~route
-13,12,18,Route 10,~route
-13,9,18,Route 10,~route
-12,8,19,Lavender Town,~city
-12,9,19,Lavender Town,~city
-13,9,19,Lavender Town,~city
-13,8,19,Lavender Town,~city
-12,4,20,Route 12,~route
-12,8,20,Route 12,~route
-13,8,20,Route 12,~route
-13,4,20,Route 12,~route
-8,9,21,Route 5,~route
-8,11,21,Route 5,~route
-9,11,21,Route 5,~route
-9,9,21,Route 5,~route
-8,8,22,Saffron City,~city
-8,9,22,Saffron City,~city
-9,9,22,Saffron City,~city
-9,8,22,Saffron City,~city
-5,8,23,Route 7,~route
-5,9,23,Route 7,~route
-8,9,23,Route 7,~route
-8,8,23,Route 7,~route
-4,8,24,Celadon City,~city
-4,9,24,Celadon City,~city
-5,9,24,Celadon City,~city
-5,8,24,Celadon City,~city
-2,8,25,Route 16,~route
-2,9,25,Route 16,~route
-4,9,25,Route 16,~route
-4,8,25,Route 16,~route
-2,2,26,Route 17,~route
-2,8,26,Route 17,~route
-3,8,26,Route 17,~route
-3,2,26,Route 17,~route
-3,2,27,Route 18,~route
-3,3,27,Route 18,~route
-6,3,27,Route 18,~route
-6,2,27,Route 18,~route
-6,2,28,Fuschia City,~city
-6,3,28,Fuschia City,~city
-7,3,28,Fuschia City,~city
-7,2,28,Fuschia City,~city
-7,2,29,Route 15,~route
-7,3,29,Route 15,~route
-10,3,29,Route 15,~route
-10,2,29,Route 15,~route
-10,2,30,Route 14,~route
-10,4,30,Route 14,~route
-11,4,30,Route 14,~route
-11,2,30,Route 14,~route
-11,3,31,Route 13,~route
-11,4,31,Route 13,~route
-13,4,31,Route 13,~route
-13,3,31,Route 13,~route
-12,4,32,Route 12,~route
-12,8,32,Route 12,~route
-13,8,32,Route 12,~route
-13,4,32,Route 12,~route
-9,5,33,Route 11,~route
-9,6,33,Route 11,~route
-12,6,33,Route 11,~route
-12,5,33,Route 11,~route
-8,5,34,Vermilion City,~city
-8,6,34,Vermilion City,~city
-9,6,34,Vermilion City,~city
-9,5,34,Vermilion City,~city
-8,6,35,Route 6,~route
-8,8,35,Route 6,~route
-9,8,35,Route 6,~route
-9,6,35,Route 6,~route
--3,11,36,Indigo Plateau,~city
--3,12,36,Indigo Plateau,~city
--2,12,36,Indigo Plateau,~city
--2,11,36,Indigo Plateau,~city
-6.5,2,37,Safari Zone,~city
-6.5,2.5,37,Safari Zone,~city
-7,2.5,37,Safari Zone,~city
-7,2,37,Safari Zone,~city
-9,5.25,38,Diglett Cave,~route
-9,5.75,38,Diglett Cave,~route
-9.5,5.75,38,Diglett Cave,~route
-9.5,5.25,38,Diglett Cave,~route
-0.25,9.5,39,Diglett Cave,~route
-0.25,10,39,Diglett Cave,~route
-0.75,10,39,Diglett Cave,~route
-0.75,9.5,39,Diglett Cave,~route
-9,8,40,Route 8,~route
-9,9,40,Route 8,~route
-12,9,40,Route 8,~route
-12,8,40,Route 8,~route
+0,0,1,Cinnabar Island,A city
+0,1,1,Cinnabar Island,A city
+1,1,1,Cinnabar Island,A city
+1,0,1,Cinnabar Island,A city
+1,0,2,Route 20,An ocean
+1,1,2,Route 20,An ocean
+7,1,2,Route 20,An ocean
+7,0,2,Route 20,An ocean
+6,1,3,Route 19,A route
+6,2,3,Route 19,A route
+7,2,3,Route 19,A route
+7,1,3,Route 19,A route
+0,1,4,Route 21,An ocean
+0,4,4,Route 21,An ocean
+1,4,4,Route 21,An ocean
+1,1,4,Route 21,An ocean
+0,4,5,Pallet Town,A city
+0,5,5,Pallet Town,A city
+1,5,5,Pallet Town,A city
+1,4,5,Pallet Town,A city
+0,5,6,Route 1,A route
+0,7,6,Route 1,A route
+1,7,6,Route 1,A route
+1,5,6,Route 1,A route
+0,7,7,Viridian City,A city
+0,8,7,Viridian City,A city
+1,8,7,Viridian City,A city
+1,7,7,Viridian City,A city
+-3,7,8,Route 22,A route
+-3,8,8,Route 22,A route
+0,8,8,Route 22,A route
+0,7,8,Route 22,A route
+-3,8,9,Route 23,A route
+-3,11,9,Route 23,A route
+-2,11,9,Route 23,A route
+-2,8,9,Route 23,A route
+0,8,10,Route 2,A route
+0,10,10,Route 2,A route
+1,10,10,Route 2,A route
+1,8,10,Route 2,A route
+0,10,11,Pewter City,A city
+0,11,11,Pewter City,A city
+1,11,11,Pewter City,A city
+1,10,11,Pewter City,A city
+1,10,12,Route 3,A route
+1,11,12,Route 3,A route
+4,11,12,Route 3,A route
+4,10,12,Route 3,A route
+3,11,13,Route 4,A route
+3,12,13,Route 4,A route
+8,12,13,Route 4,A route
+8,11,13,Route 4,A route
+8,11,14,Cerulean City,A city
+8,12,14,Cerulean City,A city
+9,12,14,Cerulean City,A city
+9,11,14,Cerulean City,A city
+8,12,15,Route 24,A route
+8,14,15,Route 24,A route
+9,14,15,Route 24,A route
+9,12,15,Route 24,A route
+9,13,16,Route 25,A route
+9,14,16,Route 25,A route
+11,14,16,Route 25,A route
+11,13,16,Route 25,A route
+9,11,17,Route 9,A route
+9,12,17,Route 9,A route
+12,12,17,Route 9,A route
+12,11,17,Route 9,A route
+12,9,18,Route 10,A route
+12,12,18,Route 10,A route
+13,12,18,Route 10,A route
+13,9,18,Route 10,A route
+12,8,19,Lavender Town,A city
+12,9,19,Lavender Town,A city
+13,9,19,Lavender Town,A city
+13,8,19,Lavender Town,A city
+12,4,20,Route 12,A route
+12,8,20,Route 12,A route
+13,8,20,Route 12,A route
+13,4,20,Route 12,A route
+8,9,21,Route 5,A route
+8,11,21,Route 5,A route
+9,11,21,Route 5,A route
+9,9,21,Route 5,A route
+8,8,22,Saffron City,A city
+8,9,22,Saffron City,A city
+9,9,22,Saffron City,A city
+9,8,22,Saffron City,A city
+5,8,23,Route 7,A route
+5,9,23,Route 7,A route
+8,9,23,Route 7,A route
+8,8,23,Route 7,A route
+4,8,24,Celadon City,A city
+4,9,24,Celadon City,A city
+5,9,24,Celadon City,A city
+5,8,24,Celadon City,A city
+2,8,25,Route 16,A route
+2,9,25,Route 16,A route
+4,9,25,Route 16,A route
+4,8,25,Route 16,A route
+2,2,26,Route 17,A route
+2,8,26,Route 17,A route
+3,8,26,Route 17,A route
+3,2,26,Route 17,A route
+3,2,27,Route 18,A route
+3,3,27,Route 18,A route
+6,3,27,Route 18,A route
+6,2,27,Route 18,A route
+6,2,28,Fuschia City,A city
+6,3,28,Fuschia City,A city
+7,3,28,Fuschia City,A city
+7,2,28,Fuschia City,A city
+7,2,29,Route 15,A route
+7,3,29,Route 15,A route
+10,3,29,Route 15,A route
+10,2,29,Route 15,A route
+10,2,30,Route 14,A route
+10,4,30,Route 14,A route
+11,4,30,Route 14,A route
+11,2,30,Route 14,A route
+11,3,31,Route 13,A route
+11,4,31,Route 13,A route
+13,4,31,Route 13,A route
+13,3,31,Route 13,A route
+12,4,32,Route 12,A route
+12,8,32,Route 12,A route
+13,8,32,Route 12,A route
+13,4,32,Route 12,A route
+9,5,33,Route 11,A route
+9,6,33,Route 11,A route
+12,6,33,Route 11,A route
+12,5,33,Route 11,A route
+8,5,34,Vermilion City,A city
+8,6,34,Vermilion City,A city
+9,6,34,Vermilion City,A city
+9,5,34,Vermilion City,A city
+8,6,35,Route 6,A route
+8,8,35,Route 6,A route
+9,8,35,Route 6,A route
+9,6,35,Route 6,A route
+-3,11,36,Indigo Plateau,A city
+-3,12,36,Indigo Plateau,A city
+-2,12,36,Indigo Plateau,A city
+-2,11,36,Indigo Plateau,A city
+6.5,2,37,Safari Zone,A city
+6.5,2.5,37,Safari Zone,A city
+7,2.5,37,Safari Zone,A city
+7,2,37,Safari Zone,A city
+9,5.25,38,Diglett Cave,A route
+9,5.75,38,Diglett Cave,A route
+9.5,5.75,38,Diglett Cave,A route
+9.5,5.25,38,Diglett Cave,A route
+0.25,9.5,39,Diglett Cave,A route
+0.25,10,39,Diglett Cave,A route
+0.75,10,39,Diglett Cave,A route
+0.75,9.5,39,Diglett Cave,A route
+9,8,40,Route 8,A route
+9,9,40,Route 8,A route
+12,9,40,Route 8,A route
+12,8,40,Route 8,A route
