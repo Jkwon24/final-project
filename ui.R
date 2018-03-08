@@ -140,6 +140,10 @@ my.ui <- fluidPage(theme = shinytheme("sandstone"),
                
                mainPanel(
                  h1("Kanto Region"),
+                 p("This map allows us to analyze the encounter locations of different species of pokemon. We can use
+                   this information to help us find where certain pokemon live, so that we may know where to catch them. 
+                   Or, this map is useful for researching what kinds of pokemon are commonly found in specific locations
+                   and what trends we might see across certain subgroups of pokemon."),
                  p("The top map highlights all areas in the Kanto Region where you can encouter a certain pokemon. The bottom map
                    allows you to look up the name of the locations visualized from the top map."),
                  p("Enter the name of the pokemon in the search box in all lower case letters. Note that you can
