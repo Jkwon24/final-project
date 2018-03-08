@@ -191,15 +191,45 @@ my.server <- function(input, output) {
     return(get.joined.list)
   })
   
+  output$pokemon.map.one.shade <- renderPlot({
+    kanto.region <- ggplot() +
+      geom_polygon(data = map.plots, aes(x = x, y = y, group = group, fill = location_type)) +
+      geom_polygon(data = plot.list.of.location(), aes(x = x, y = y, group = group, fill = location_name)) + 
+      scale_fill_manual(values = c("#e6194b", "#0082c8", "#3cb44b", "#FFFF00", "#FFFF00", "#FFFF00", "#FFFF00"
+                                   , "#FFFF00", "#FFFF00", "#FFFF00", "#FFFF00", "#FFFF00", "#FFFF00", "#FFFF00"
+                                   , "#FFFF00", "#FFFF00", "#FFFF00", "#FFFF00", "#FFFF00", "#FFFF00", "#FFFF00"
+                                   , "#FFFF00", "#FFFF00", "#FFFF00")) +
+      coord_quickmap() +
+      theme(axis.title.x = element_blank(),
+            axis.title.y = element_blank(),
+            axis.ticks.x = element_blank(),
+            axis.ticks.y = element_blank(),
+            axis.text.x = element_blank(),
+            axis.text.y = element_blank()) +
+      labs(title = paste("Areas to Encounter", input$pokemon)) +
+      theme(plot.title = element_text(size = 22)) +
+      guides(fill=guide_legend(title="Location Name"))
+    return(kanto.region)
+  })
+  
   output$pokemon.map <- renderPlot({
     kanto.region <- ggplot() +
       geom_polygon(data = map.plots, aes(x = x, y = y, group = group, fill = location_type)) +
       geom_polygon(data = plot.list.of.location(), aes(x = x, y = y, group = group, fill = location_name)) + 
-      scale_fill_manual(values = c("red", "blue", "green", "#FFFF00", "#FFFF00", "#FFFF00", "#FFFF00"
-                                   , "#FFFF00", "#FFFF00", "#FFFF00", "#FFFF00", "#FFFF00", "#FFFF00"
-                                   , "#FFFF00", "#FFFF00", "#FFFF00", "#FFFF00", "#FFFF00", "#FFFF00")) +
-      coord_quickmap()
-    return(kanto.region)
+      scale_fill_manual(values = c("#e6194b", "#0082c8", "#3cb44b", "#FFFF00", "#FF00FF", "#C0C0C0", "#f58231", "#00FF00"
+                                   , "#911eb4", "#87CEFA", "#46f0f0", "#000000", "#808080", "#6A5ACD", "#d2f53c", "#fabebe"
+                                   , "#008080", "#e6beff", "#aa6e28", "#fffac8", "#800000", "#aaffc3", "#808000", "#ffd8b1")) +
+      coord_quickmap() +
+      theme(axis.title.x = element_blank(),
+            axis.title.y = element_blank(),
+            axis.ticks.x = element_blank(),
+            axis.ticks.y = element_blank(),
+            axis.text.x = element_blank(),
+            axis.text.y = element_blank()) +
+      labs(title = paste0("Specific Locations to Encounter ", input$pokemon)) +
+      theme(plot.title = element_text(size = 22)) +
+      guides(fill=guide_legend(title="Location Name"))
+    return(kanto.region) 
   })
 }  
 
