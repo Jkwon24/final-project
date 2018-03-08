@@ -4,6 +4,7 @@
 library(dplyr)
 library(httr)
 library(jsonlite)
+library(ggplot2)
 
 base.uri <- "http://pokeapi.co/api/v2/"
 

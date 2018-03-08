@@ -3,21 +3,35 @@
 
 library("shinythemes")
 library("ggplot2")
-library("leaflet")
 library("png")
-library("imager")
+#library("imager")
 
 pokemonInfo <- read.csv("data/PokemonInfo.csv")
 
-my.ui <- fluidPage(theme = shinytheme("darkly"),
+my.ui <- fluidPage(theme = shinytheme("sandstone"),
                    
-  tags$head(
-    tags$style(HTML(".leaflet-container { background: #ffffff; }"))
-  ),
+
   titlePanel("Pokemon Data"),
   
   tabsetPanel(
     # TABLE TABS 
+    tabPanel("Welcome",
+             mainPanel(
+               h1("Welcome to our Pokemon Data Shiny App!"),
+               h3("The purpose of this app is to allow users to 
+                  obtain further knowledge on a specific feature for all Generation 1 Pokemon. This offers a
+                  wide variety of information ranging from pokemon move sets, passive abilities, particular
+                  stats, and to even the location of a pokemon you are looking for by using the provided tabs."),
+               tags$img(src = "https://scontent-sea1-1.xx.fbcdn.net/v/t34.0-12/28722063_580603685627571_671311557_n.png?oh=186389e7c561470c3194c5f2cb2623a0&oe=5AA3C616", width = "400px", height = "325px"),
+               h3("Sources"),
+               h6("Used the pokeapi to obtain data"),
+               h6("https://pokeapi.co/docsv2/"),
+               h6("Cover image"),
+               h6("https://scontent-sea1-1.xx.fbcdn.net/v/t34.0-12/28722063_580603685627571_671311557_n.png?oh=186389e7c561470c3194c5f2cb2623a0&oe=5AA3C616")
+             )
+            
+    ),
+    
     tabPanel("Table 1 [Conner]",
              sidebarLayout(
                # Sidebar Widgets
@@ -31,7 +45,7 @@ my.ui <- fluidPage(theme = shinytheme("darkly"),
                  
                  h2("Filter by Pokemon Type"),
                  selectInput("typeName", "Type of Pokemon", 
-                             c("fire", "water", "poision", "grass", "flying", 
+                             c("fire", "water", "poison", "grass", "flying", 
                                "bug", "normal", "electric", "ground", "fairy",
                                "grass", "fighting", "psychic", "rock", "Steel",
                                "ice", "dragon")
@@ -77,10 +91,17 @@ my.ui <- fluidPage(theme = shinytheme("darkly"),
                  selectInput("only", "Enter a Passive Ability", choices = abilities$Passive.Abilities)
                ),
                mainPanel(
-                 textOutput("pokemonMessage"),
+                 h4(textOutput("pokemonMessage")),
                  tableOutput("abilities"),
-                 textOutput("abilitiesMessage"),
-                 tableOutput("pokemon.names")  
+                 h4(textOutput("abilitiesMessage")),
+                 tableOutput("pokemon.names"), 
+                 h5(textOutput("countAbilities")),
+                 br(),
+                 h4("Why is it important to know the passive abilities of a pokemon?
+                     It's important because certain abilities are ineffective to specific moves,
+                     and some passive can even change the dynamics of the playing field.")
+                 
+            
                  
                  
                )
@@ -97,6 +118,9 @@ my.ui <- fluidPage(theme = shinytheme("darkly"),
     
     tabPanel("Pokemon Search",
       h1("Pokemon Search!"),
+
+      h2("Pokemon Search!"),
+      
 
       sidebarLayout(
         sidebarPanel(
@@ -122,10 +146,32 @@ my.ui <- fluidPage(theme = shinytheme("darkly"),
         ),
         
         mainPanel(
-          textOutput("tableMessage"),
+          h4(textOutput("tableMessage")),
           tableOutput("tableOutput")
         )
       )
+    ),
+    
+    tabPanel("Base Stats",
+             sidebarLayout(
+               sidebarPanel(
+                 selectInput("statsDropdown", "Choose a stat to view:",
+                             c('HP' = "HP",
+                               'Attack' = "Attack",
+                               'Defense' = "Defense",
+                               'Special Attack' = "Special Attack",
+                               'Special Defense' = "Special Defense",
+                               'Speed' = "Speed",
+                               'Average of all Base Stats' = "Average Value")
+                 )
+               ),
+
+               mainPanel(
+                 textOutput("plotMessage"),
+                 plotOutput("plotOutput", hover = hoverOpts(id = "plot_hover")),
+                 verbatimTextOutput("hover_info")
+               )
+             )
     ),
     
     ##################################
@@ -133,8 +179,26 @@ my.ui <- fluidPage(theme = shinytheme("darkly"),
     ##################################
     
     
-    tabPanel("Kanto Map",
-             leafletOutput("pokemon.map")
+    tabPanel("Pokemon Locator",
+             sidebarLayout(
+               sidebarPanel(
+                 textInput("pokemon", "Pokemon Name:")
+               ),
+               
+               mainPanel(
+                 h1("Kanto Region"),
+                 p("This map allows us to analyze the encounter locations of different species of pokemon. We can use
+                   this information to help us find where certain pokemon live, so that we may know where to catch them. 
+                   Or, this map is useful for researching what kinds of pokemon are commonly found in specific locations
+                   and what trends we might see across certain subgroups of pokemon."),
+                 p("The top map highlights all areas in the Kanto Region where you can encouter a certain pokemon. The bottom map
+                   allows you to look up the name of the locations visualized from the top map."),
+                 p("Enter the name of the pokemon in the search box in all lower case letters. Note that you can
+                   search for nidoran-f and nidoran-m separately as they are treated distinctly."),
+                 plotOutput("pokemon.map.one.shade"),
+                 plotOutput("pokemon.map")
+               ) 
+             )
     )
   )
 )        

@@ -1,14 +1,14 @@
 # Final Project Server File
 library("dplyr")
 library("png")
-library("imager")
+#library("imager")
 
-
-source("KantoRegion.R")
+source("BaseStats.R")
 map.plots <- read.csv("data/pokemonMap.csv", stringsAsFactors = FALSE)
 pokemonTypes <- read.csv("data/PokemonTypes.csv", stringsAsFactors = FALSE)
 pokemonInfo <- read.csv("data/PokemonInfo.csv", stringsAsFactors = FALSE)
 colnames(pokemonTypes) <- c("num", "ID", "name", "type")
+find.location <- read.csv("data/pokemonLocations.csv", stringsAsFactors = FALSE)
 
 my.server <- function(input, output) {
   
@@ -85,9 +85,9 @@ my.server <- function(input, output) {
     joinTable[,3] <- toupper(joinTable[,3])
     colnames(joinTable)[3] <- "NAME"
     finalTable <- filter(joinTable, type == typeDropdown()) %>%
-      select(ID, NAME, type, Weight, Height) %>%
+      select(ID, NAME, type, Weight, Height, Sprite) %>%
       arrange(ID)
-    colnames(finalTable) <- c("ID", "NAME", "TYPE", "WEIGHT", "HEIGHT")
+    colnames(finalTable) <- c("ID", "NAME", "TYPE", "WEIGHT", "HEIGHT", "SPRITE")
     finalTable[,3] <- toupper(finalTable[,3])
     
     # links <- joinTable$Sprite
@@ -100,13 +100,96 @@ my.server <- function(input, output) {
     return(finalTable)
   })
   
+  statsDropdown <- reactive({
+    return(input$statsDropdown)
+  })
   
+ HEAD
   ##################################
   #### Workspace end for Karan #####
   ##################################
   
 
-  # Josh data frames
+  
+  output$plotMessage <- renderText ({
+    return(paste0("This plot shows the base ", gsub('plot', '', statsDropdown()), " for all Pokemon.
+                  This plot is arranged by Ranking on the x-axis, with the highest ranking Pokemon
+                  appearing first and the lowest ranking Pokemon appearing last. Hover over values
+                  in the graph for more information."))
+  })
+  
+  plotDealingWith <- reactive({
+    x <- data.frame(stringsAsFactors = FALSE)
+    if (statsDropdown() == "Attack") {
+      x <- attack
+    } else if (statsDropdown() == "Defense") {
+      x <- defense
+    } else if (statsDropdown() == "Special Defense") {
+      x <- special.defense
+    } else if (statsDropdown() == "Special Attack") {
+      x <- special.attack
+    } else if (statsDropdown() == "HP") {
+      x <- hp
+    } else if (statsDropdown() == "Speed") {
+      x <- speed
+    } else {
+      x <- totalplot
+    }
+    return(x)
+  })
+  
+  output$plotOutput <- renderPlot({
+    x <- plotDealingWith()
+    if (statsDropdown() == "Attack") {
+      (statplot <- ggplot(x, aes(`Pokemon ID`, `Base Attack`)) +
+          geom_point(aes(colour = `Base Attack`)))
+    } else if (statsDropdown() == "Defense") {
+      (statplot <- ggplot(x, aes(`Pokemon ID`, `Base Defense`)) +
+          geom_point(aes(colour = `Base Defense`)))
+    } else if (statsDropdown() == "Special Defense") {
+      (statplot <- ggplot(x, aes(`Pokemon ID`, `Base Special Defense`)) +
+          geom_point(aes(colour = `Base Special Defense`)))
+    } else if (statsDropdown() == "Special Attack") {
+      (statplot <- ggplot(x, aes(`Pokemon ID`, `Base Special Attack`)) +
+          geom_point(aes(colour = `Base Special Attack`)))
+    } else if (statsDropdown() == "HP") {
+      (statplot <- ggplot(x, aes(`Pokemon ID`, `Base HP`)) +
+          geom_point(aes(colour = `Base HP`)))
+    } else if (statsDropdown() == "Speed") {
+      (statplot <- ggplot(x, aes(`Pokemon ID`, `Base Speed`)) +
+          geom_point(aes(colour = `Base Speed`)))
+    } else {
+      (statplot <- ggplot(x, aes(`Pokemon ID`, `Average`)) +
+         geom_point(aes(colour = `Average`)))
+    }
+    return(statplot)
+  })
+  
+  output$hover_info <- renderPrint({
+    if(!is.null(input$plot_hover)){
+      hover=input$plot_hover
+      if (hover$x <= 0 | hover$x >= 152) {
+        return("No data here.")
+      }
+      pokemon.id.plot <- floor(hover$x)
+      data.frame.stat <- plotDealingWith()
+      pokemon.name <- filter(data.frame.stat, `Pokemon ID` == pokemon.id.plot)
+      names.columns <- colnames(pokemon.name)
+      colnames(pokemon.name)[5] <- "stat"
+      if (abs(hover$y - pokemon.name$stat) < 6 ) {
+        return(paste(pokemon.name$Name[[1]], names.columns[5], ":", pokemon.name$stat[[1]]))
+      } else {
+        return("No data here.")
+      }
+    }
+    
+    
+
+  })
+  ##################################
+  ####### Josh's Work Space ########
+  ##################################
+  
   pokemon.names <- (data.frame(pokemonNames))
   abilities <- read.csv(file="data/PokemonAbilities.csv", stringsAsFactors=FALSE)
   abilities$X <- NULL
@@ -114,12 +197,26 @@ my.server <- function(input, output) {
   abilities <- arrange(abilities, ID)
   only <- abilities[, c("Passive.Abilities")]
   
+  output$coverImage <- renderImage ({
+    tags$img(src = "https://scontent-sea1-1.xx.fbcdn.net/v/t34.0-12/28722063_580603685627571_671311557_n.png?oh=186389e7c561470c3194c5f2cb2623a0&oe=5AA3C616", width = "100px", height = "100px")
+    
+  })
+  
+  totalAbilities <- reactive ({
+    return(length(which(abilities == input$only)))
+    
+  })
+  output$countAbilities <- renderText ({
+    return(paste("The number of pokemon that can have this ability is", totalAbilities(), "/ 151", "which is approximately", round(totalAbilities()/151 * 100),"%."))
+  })
+  
+  
   pokemonNames <- reactive ({
     return(input$pokemonNames)
   })
   
   output$pokemonMessage <- renderText({
-    return(paste("Passive abilities that can be found on", pokemonNames()))
+    return(paste("The following passive abilities can be found on", pokemonNames()))
   })
   
   only <- reactive({
@@ -127,8 +224,7 @@ my.server <- function(input, output) {
   })
   
   output$abilitiesMessage <- renderText({
-    return(paste("This table contains all of the pokemon that can potentially 
-                  have", only()))
+    return(paste("The following pokemon can potentially have", only()))
   })
   
   
@@ -140,9 +236,57 @@ my.server <- function(input, output) {
     second.filtered <- subset(abilities, abilities$Passive.Abilities == input$only)
   })
   
-  output$pokemon.map <- renderPlot({
-    kanto.region <- ggplot(map.plots, aes(x = x, y = y)) +
-      geom_polygon(aes(fill = location_type, group = group))
+  list.of.location <- reactive({
+    get.list <- find.location %>% 
+      filter(pokemon_name == input$pokemon) %>% 
+      select(location_name)
+    return(get.list)
   })
-  }  
+  
+  plot.list.of.location <- reactive({
+    get.joined.list <- left_join(list.of.location(), map.plots)
+    return(get.joined.list)
+  })
+  
+  output$pokemon.map.one.shade <- renderPlot({
+    kanto.region <- ggplot() +
+      geom_polygon(data = map.plots, aes(x = x, y = y, group = group, fill = location_type)) +
+      geom_polygon(data = plot.list.of.location(), aes(x = x, y = y, group = group, fill = location_name)) + 
+      scale_fill_manual(values = c("#e6194b", "#0082c8", "#3cb44b", "#FFFF00", "#FFFF00", "#FFFF00", "#FFFF00"
+                                   , "#FFFF00", "#FFFF00", "#FFFF00", "#FFFF00", "#FFFF00", "#FFFF00", "#FFFF00"
+                                   , "#FFFF00", "#FFFF00", "#FFFF00", "#FFFF00", "#FFFF00", "#FFFF00", "#FFFF00"
+                                   , "#FFFF00", "#FFFF00", "#FFFF00")) +
+      coord_quickmap() +
+      theme(axis.title.x = element_blank(),
+            axis.title.y = element_blank(),
+            axis.ticks.x = element_blank(),
+            axis.ticks.y = element_blank(),
+            axis.text.x = element_blank(),
+            axis.text.y = element_blank()) +
+      labs(title = paste("Areas to Encounter", input$pokemon)) +
+      theme(plot.title = element_text(size = 22)) +
+      guides(fill=guide_legend(title="Location Name"))
+    return(kanto.region)
+  })
+  
+  output$pokemon.map <- renderPlot({
+    kanto.region <- ggplot() +
+      geom_polygon(data = map.plots, aes(x = x, y = y, group = group, fill = location_type)) +
+      geom_polygon(data = plot.list.of.location(), aes(x = x, y = y, group = group, fill = location_name)) + 
+      scale_fill_manual(values = c("#e6194b", "#0082c8", "#3cb44b", "#FFFF00", "#FF00FF", "#C0C0C0", "#f58231", "#00FF00"
+                                   , "#911eb4", "#87CEFA", "#46f0f0", "#000000", "#808080", "#6A5ACD", "#d2f53c", "#fabebe"
+                                   , "#008080", "#e6beff", "#aa6e28", "#fffac8", "#800000", "#aaffc3", "#808000", "#ffd8b1")) +
+      coord_quickmap() +
+      theme(axis.title.x = element_blank(),
+            axis.title.y = element_blank(),
+            axis.ticks.x = element_blank(),
+            axis.ticks.y = element_blank(),
+            axis.text.x = element_blank(),
+            axis.text.y = element_blank()) +
+      labs(title = paste0("Specific Locations to Encounter ", input$pokemon)) +
+      theme(plot.title = element_text(size = 22)) +
+      guides(fill=guide_legend(title="Location Name"))
+    return(kanto.region) 
+  })
+}  
 
