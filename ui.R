@@ -1,6 +1,7 @@
 # Final Project UI Code
 
 
+library("rsconnect")
 library("shinythemes")
 library("ggplot2")
 library("png")
@@ -206,6 +207,8 @@ my.ui <- fluidPage(theme = shinytheme("sandstone"),
          ),
          
          mainPanel(
+           h2("Sprites"),
+           h5("In case you were wondering what the pokemon looks like, here are 4 different perspectives of the desired pokemon!"),
            tabsetPanel(
              tabPanel("Front",
                 imageOutput("frontSprite")
