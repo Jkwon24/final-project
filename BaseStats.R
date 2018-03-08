@@ -74,15 +74,15 @@ Average <- totalValues / 6
 
 totalplot <- select(hp, `Pokemon ID`, Name, stat_id, identifier) %>%
               mutate(Average)
-  
 
 
-pokemon.names <- (data.frame(pokemonNames))
+pokemon.names <- read.csv(file="data/PokemonNames.csv", stringsAsFactors = FALSE)
+pokemon.names$X <- NULL
+names(pokemon.names) <- c("pokemonNames")
 abilities <- read.csv(file="data/PokemonAbilities.csv", stringsAsFactors=FALSE)
 abilities$X <- NULL
 names(abilities) <- c("ID", "Pokemon.Name", "Passive.Abilities")
 abilities <- arrange(abilities, ID)
 only <- abilities[, c("Passive.Abilities")]
-
 
 

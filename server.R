@@ -3,7 +3,8 @@ library("dplyr")
 library("png")
 #library("imager")
 
-source("BaseStats.R")
+source("BaseStats.R") 
+
 map.plots <- read.csv("data/pokemonMap.csv", stringsAsFactors = FALSE)
 pokemonTypes <- read.csv("data/PokemonTypes.csv", stringsAsFactors = FALSE)
 pokemonInfo <- read.csv("data/PokemonInfo.csv", stringsAsFactors = FALSE)
@@ -185,7 +186,6 @@ my.server <- function(input, output) {
       }
     }
     
-    
 
   })
   ##################################
@@ -290,4 +290,5 @@ my.server <- function(input, output) {
     return(kanto.region) 
   })
 }  
+
 

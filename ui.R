@@ -6,6 +6,8 @@ library("ggplot2")
 library("png")
 #library("imager")
 
+source("BaseStats.R") 
+
 pokemonInfo <- read.csv("data/PokemonInfo.csv")
 
 my.ui <- fluidPage(theme = shinytheme("sandstone"),
@@ -203,4 +205,3 @@ my.ui <- fluidPage(theme = shinytheme("sandstone"),
 
 shinyUI(my.ui)
 
-shinyApp(ui=my.ui, server=my.server)

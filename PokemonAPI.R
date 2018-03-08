@@ -58,7 +58,7 @@ for (i in pokemonNames) {
   pokemonTypes <- rbind(pokemonTypes, specificTypes)
 }
 
-
+write.csv(pokemonNames, file = "data/PokemonNames.csv")
 write.csv(pokemonInfo, file = "data/PokemonInfo.csv")
 write.csv(pokemonAbilities, file = "data/PokemonAbilities.csv")
 write.csv(pokemonMoves, file = "data/PokemonMoves.csv")
