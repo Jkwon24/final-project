@@ -16,9 +16,7 @@ find.location <- read.csv("data/pokemonLocations.csv", stringsAsFactors = FALSE)
 my.server <- function(input, output) {
   
   pokemonInfo <- read.csv("data/PokemonInfo.csv")
-  moveInfo <- read.csv("data/PokemonAbilities.csv")
-    
-  
+  moveInfo <- read.csv("data/PokemonMoves.csv")
   
   #--------------Pokemon Names Reactives In Here--------------#
   pokemonName.reactive <- reactive({
@@ -40,32 +38,42 @@ my.server <- function(input, output) {
   
   output$pokemonImage <- renderText({
     target <- pokemonInfo[1 == pokemonName.reactive(), 4]
-    
-    
   })
   
   
   
   #--------------Move Name Reactives In Here--------------#
+  
   moveName.reactive <- reactive({
     return(input$MoveName)
   })
   
-  # Reactive Pokemon Name for Text Input
-  output$move <- renderText({
-    return(moveName.reactive)
+  # Output stream for user inputed move name
+  output$moveName <- renderText({
+    return(moveName.reactive())
   })
-  #---------------Make a mini-table of data--------------#
+  
+  # Creates reactive table that returns the pokemon's ID, Pokemon's Name, and Move Name (reactivly changes)
   output$moveTable <- renderTable({
     moveTable <- filter(moveInfo, moveInfo[, 4] == moveName.reactive())
+    colnames(moveTable) <- c("Move ID", "Pokemon ID", "Pokemon Name", "Move Name")
+    moveCount <- nrow(moveTable)
+    return(moveTable[, 2:4])
   })
-  #------------------------------------------------------#
   
-  
-  typeName.reactive <-reactive({
-    return
-    
+  # Calculates the total number of pokemon capable of learning this move in Gen 1
+  moveCount.reactive <- reactive({
+    moveTable <- filter(moveInfo, moveInfo[, 4] == moveName.reactive())
+    colnames(moveTable) <- c("Move ID", "Pokemon ID", "Pokemon Name", "Move Name")
+    moveCount <- nrow(moveTable)
+    return(moveCount)
   })
+  
+  # Output stream for count calculated above 
+  output$count <- renderText({
+    return(moveCount.reactive())
+  })
+  
   
   
   ##################################
