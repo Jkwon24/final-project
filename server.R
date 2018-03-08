@@ -10,6 +10,9 @@ pokemonInfo <- read.csv("data/PokemonInfo.csv", stringsAsFactors = FALSE)
 colnames(pokemonTypes) <- c("num", "ID", "name", "type")
 find.location <- read.csv("data/pokemonLocations.csv", stringsAsFactors = FALSE)
 
+source("serverr.R")
+
+
 my.server <- function(input, output) {
   
   pokemonInfo <- read.csv("data/PokemonInfo.csv")
@@ -190,13 +193,7 @@ my.server <- function(input, output) {
   ####### Josh's Work Space ########
   ##################################
   
-  pokemon.names <- (data.frame(pokemonNames))
-  abilities <- read.csv(file="data/PokemonAbilities.csv", stringsAsFactors=FALSE)
-  abilities$X <- NULL
-  names(abilities) <- c("ID", "Pokemon.Name", "Passive.Abilities")
-  abilities <- arrange(abilities, ID)
-  only <- abilities[, c("Passive.Abilities")]
-  
+
   output$coverImage <- renderImage ({
     tags$img(src = "https://scontent-sea1-1.xx.fbcdn.net/v/t34.0-12/28722063_580603685627571_671311557_n.png?oh=186389e7c561470c3194c5f2cb2623a0&oe=5AA3C616", width = "100px", height = "100px")
     

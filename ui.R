@@ -99,10 +99,8 @@ my.ui <- fluidPage(theme = shinytheme("sandstone"),
                  br(),
                  h4("Why is it important to know the passive abilities of a pokemon?
                      It's important because certain abilities are ineffective to specific moves,
-                     and some passive can even change the dynamics of the playing field.")
-                 
-            
-                 
+                     and some passives can even change the dynamics of the playing field.")
+                      
                  
                )
              ) 

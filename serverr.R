@@ -1,14 +1,8 @@
-library(shiny)
-server <- shinyServer(function(input,output){
-  output$abilities <- renderTable({
-    filtered.abilities <- subset(abilities, abilities$Pokemon.Name == input$pokemonNames)
-  })
-  output$pokemon.names <- renderTable({
-    second.filtered <- subset(abilities, abilities$Passive.Abilities == input$only)
-  })
-  
-})
+library("dplyr")
 
-
-
-shinyApp(ui=ui, server=server)
+pokemon.names <- (data.frame(pokemonNames))
+abilities <- read.csv(file="data/PokemonAbilities.csv", stringsAsFactors=FALSE)
+abilities$X <- NULL
+names(abilities) <- c("ID", "Pokemon.Name", "Passive.Abilities")
+abilities <- arrange(abilities, ID)
+only <- abilities[, c("Passive.Abilities")]
