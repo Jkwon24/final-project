@@ -4,7 +4,7 @@
 #source("PokemonMap.R")
 library("dplyr")
 library("png")
-#library("imager")
+
 
 source("BaseStats.R")
 map.plots <- read.csv("data/pokemonMap.csv", stringsAsFactors = FALSE)
