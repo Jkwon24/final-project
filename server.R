@@ -96,17 +96,10 @@ my.server <- function(input, output) {
     joinTable[,3] <- toupper(joinTable[,3])
     colnames(joinTable)[3] <- "NAME"
     finalTable <- filter(joinTable, type == typeDropdown()) %>%
-      select(ID, NAME, type, Weight, Height, Sprite) %>%
+      select(ID, NAME, type, Weight, Height) %>%
       arrange(ID)
-    colnames(finalTable) <- c("ID", "NAME", "TYPE", "WEIGHT", "HEIGHT", "SPRITE")
+    colnames(finalTable) <- c("ID", "NAME", "TYPE", "WEIGHT", "HEIGHT")
     finalTable[,3] <- toupper(finalTable[,3])
-    
-    # links <- joinTable$Sprite
-    # pics <- c()
-    # for (i in links) {
-    #   pics <- c(pics, load.image(i))
-    # }
-    # joinTable <- mutate(joinTable, pics)
     
     return(finalTable)
   })
@@ -115,18 +108,15 @@ my.server <- function(input, output) {
     return(input$statsDropdown)
   })
   
- HEAD
-  ##################################
-  #### Workspace end for Karan #####
-  ##################################
+
   
 
   
   output$plotMessage <- renderText ({
-    return(paste0("This plot shows the base ", gsub('plot', '', statsDropdown()), " for all Pokemon.
-                  This plot is arranged by Ranking on the x-axis, with the highest ranking Pokemon
-                  appearing first and the lowest ranking Pokemon appearing last. Hover over values
-                  in the graph for more information."))
+    return(paste0("This plot shows the base ", gsub('plot', '', statsDropdown()), " 
+                  for all Pokemon. This plot is arranged by Pokemon ID on the x-axis,
+                  thus allowing users to compare a Pokemon's stats between all the
+                  graphs easily. Hover over values in the graph for more information."))
   })
   
   plotDealingWith <- reactive({
@@ -153,25 +143,25 @@ my.server <- function(input, output) {
     x <- plotDealingWith()
     if (statsDropdown() == "Attack") {
       (statplot <- ggplot(x, aes(`Pokemon ID`, `Base Attack`)) +
-          geom_point(aes(colour = `Base Attack`)))
+          geom_point(aes(colour = `Base Attack`)) + geom_smooth(method = "lm"))
     } else if (statsDropdown() == "Defense") {
       (statplot <- ggplot(x, aes(`Pokemon ID`, `Base Defense`)) +
-          geom_point(aes(colour = `Base Defense`)))
+          geom_point(aes(colour = `Base Defense`)) + geom_smooth(method = "lm"))
     } else if (statsDropdown() == "Special Defense") {
       (statplot <- ggplot(x, aes(`Pokemon ID`, `Base Special Defense`)) +
-          geom_point(aes(colour = `Base Special Defense`)))
+          geom_point(aes(colour = `Base Special Defense`)) + geom_smooth(method = "lm"))
     } else if (statsDropdown() == "Special Attack") {
       (statplot <- ggplot(x, aes(`Pokemon ID`, `Base Special Attack`)) +
-          geom_point(aes(colour = `Base Special Attack`)))
+          geom_point(aes(colour = `Base Special Attack`)) + geom_smooth(method = "lm"))
     } else if (statsDropdown() == "HP") {
       (statplot <- ggplot(x, aes(`Pokemon ID`, `Base HP`)) +
-          geom_point(aes(colour = `Base HP`)))
+          geom_point(aes(colour = `Base HP`)) + geom_smooth(method = "lm"))
     } else if (statsDropdown() == "Speed") {
       (statplot <- ggplot(x, aes(`Pokemon ID`, `Base Speed`)) +
-          geom_point(aes(colour = `Base Speed`)))
+          geom_point(aes(colour = `Base Speed`)) + geom_smooth(method = "lm"))
     } else {
       (statplot <- ggplot(x, aes(`Pokemon ID`, `Average`)) +
-         geom_point(aes(colour = `Average`)))
+         geom_point(aes(colour = `Average`)) + geom_smooth(method = "lm"))
     }
     return(statplot)
   })
@@ -196,6 +186,13 @@ my.server <- function(input, output) {
     
 
   })
+  
+  ##################################
+  #### Workspace end for Karan #####
+  ##################################
+  
+  
+  
   ##################################
   ####### Josh's Work Space ########
   ##################################
