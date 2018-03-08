@@ -1,12 +1,15 @@
 # Final Project UI Code
-
+# Pokemon Database API and CSV data scraping and wranging
 
 library("shinythemes")
 library("ggplot2")
 library("png")
-#library("imager")
+library("leaflet")
+library("shiny")
 
 pokemonInfo <- read.csv("data/PokemonInfo.csv")
+moveInfo <- read.csv("data/PokemonMoves.csv")
+
 
 my.ui <- fluidPage(theme = shinytheme("sandstone"),
                    
@@ -15,24 +18,13 @@ my.ui <- fluidPage(theme = shinytheme("sandstone"),
   
   tabsetPanel(
     # TABLE TABS 
-    tabPanel("Table 1 [Conner]",
+    tabPanel("Table 1",
              sidebarLayout(
                # Sidebar Widgets
                sidebarPanel(
+                 h1("Move Search"),
+                 textInput("MoveName", "Please Enter a Move Name")
                  
-                 h2("Pokemon Search!"),
-                 textInput("PokemonName", "Please Enter a Pokemon Name"),
-                 
-                 h2("Move Search"),
-                 textInput("MoveName", "Please Enter a Move Name"),
-                 
-                 h2("Filter by Pokemon Type"),
-                 selectInput("typeName", "Type of Pokemon", 
-                             c("fire", "water", "poison", "grass", "flying", 
-                               "bug", "normal", "electric", "ground", "fairy",
-                               "grass", "fighting", "psychic", "rock", "Steel",
-                               "ice", "dragon")
-                 )
                  
                  
                ),
@@ -46,14 +38,26 @@ my.ui <- fluidPage(theme = shinytheme("sandstone"),
                mainPanel(
                  h2("Pokemon Database Information Panel"),
                  
-                 # Lets me show them what they are typing in inside my panel + makes reactive
-                 h3("Showing information on:"),
-                 chosenPokemon <- textOutput("pokemon"),
-                 #print(pokemon.NameReactive)
-                 tableOutput("filteredTable"),
+                 h3("Showing move information for:"),
+                 textOutput("moveName"),
                  tableOutput("moveTable"),
                  
-                 htmlOutput("pokemonImage")
+                 h3("Total Number of Pokemon in Gen 1 this move can be taught to:"),
+                 textOutput("count"),
+                 h2("Why does this Data Matter?"),
+                 
+                 h3("This tab functions as a move search, allowing a user to search for a move in the pokemon world. 
+                     As an output, this tab will return a data table consisting of all pokemon capable of learning
+                     that specific move. It will also return the total number of pokemon in that table, which gives the 
+                     user access to some very interesting data. For example, through the use of this application, we 
+                     found the 3 most common moves in the gen 1 pokemon world were Tackle, Leer, and Growl"),
+                 
+                 h3("This data could be useful in the context it works in, by allowing the user to calculate the strength
+                     of a move based on its rarity. For example, 'clamp' is considered one of the best moves in Gen 1.
+                     By using this table, you can see it can only be learned by 2 pokemon. Its effect is incredibly potent,
+                     and it is a very common occurence to see these high power moves restricted to low numbers of total
+                     pokemon that can learn it.")
+                 
                  
                  
                  
@@ -155,5 +159,6 @@ my.ui <- fluidPage(theme = shinytheme("sandstone"),
     )
   )
 )        
+
 
 shinyUI(my.ui)
