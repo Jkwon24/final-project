@@ -139,7 +139,8 @@ my.ui <- fluidPage(theme = shinytheme("sandstone"),
                ),
                
                mainPanel(
-                 p("The top map highlights all areas in which you can encouter a certain pokemon. The bottom map
+                 h1("Kanto Region"),
+                 p("The top map highlights all areas in the Kanto Region where you can encouter a certain pokemon. The bottom map
                    allows you to look up the name of the locations visualized from the top map."),
                  p("Enter the name of the pokemon in the search box in all lower case letters. Note that you can
                    search for nidoran-f and nidoran-m separately as they are treated distinctly."),
