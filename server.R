@@ -303,7 +303,7 @@ my.server <- function(input, output) {
     kanto.region <- ggplot() +
       geom_polygon(data = map.plots, aes(x = x, y = y, group = group, fill = location_type)) +
       geom_polygon(data = plot.list.of.location(), aes(x = x, y = y, group = group, fill = location_name)) + 
-      scale_fill_manual(values = c("#e6194b", "#3cb44b", "#0082c8", "#FFFF00", "#FFFF00", "#FFFF00", "#FFFF00"
+      scale_fill_manual(values = c("#e6194b", , "#0082c8", "#3cb44b", "#FFFF00", "#FFFF00", "#FFFF00", "#FFFF00"
                                    , "#FFFF00", "#FFFF00", "#FFFF00", "#FFFF00", "#FFFF00", "#FFFF00", "#FFFF00"
                                    , "#FFFF00", "#FFFF00", "#FFFF00", "#FFFF00", "#FFFF00", "#FFFF00", "#FFFF00"
                                    , "#FFFF00", "#FFFF00", "#FFFF00")) +
@@ -324,7 +324,7 @@ my.server <- function(input, output) {
     kanto.region <- ggplot() +
       geom_polygon(data = map.plots, aes(x = x, y = y, group = group, fill = location_type)) +
       geom_polygon(data = plot.list.of.location(), aes(x = x, y = y, group = group, fill = location_name)) + 
-      scale_fill_manual(values = c("#e6194b", "#3cb44b", "#0082c8", "#FFFF00", "#FF00FF", "#C0C0C0", "#f58231", "#00FF00"
+      scale_fill_manual(values = c("#e6194b", "#0082c8", "#3cb44b", "#FFFF00", "#FF00FF", "#C0C0C0", "#f58231", "#00FF00"
                                    , "#911eb4", "#87CEFA", "#46f0f0", "#000000", "#808080", "#6A5ACD", "#d2f53c", "#fabebe"
                                    , "#008080", "#e6beff", "#aa6e28", "#fffac8", "#800000", "#aaffc3", "#808000", "#ffd8b1")) +
       coord_quickmap() +
