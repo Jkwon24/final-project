@@ -303,11 +303,8 @@ my.server <- function(input, output) {
     kanto.region <- ggplot() + 
       geom_polygon(data = map.plots, aes(x = x, y = y, group = group, fill = location_type)) +
       geom_polygon(data = plot.list.of.location(), aes(x = x, y = y, group = group, fill = location_name)) + 
-<<<<<<< HEAD
-      scale_fill_manual(values = c(  "#e6194b", "#3cb44b", "#0082c8", "#FFFF00", "#FFFF00", "#FFFF00", "#FFFF00"
-=======
-      scale_fill_manual(values = c("#e6194b", "#0082c8", "#3cb44b", "#FFFF00", "#FFFF00", "#FFFF00", "#FFFF00"
->>>>>>> c84f3ea7d56158284f7ecc2623fabc026133169d
+
+      scale_fill_manual(values = c("#e6194b", "#3cb44b", "#0082c8", "#FFFF00", "#FFFF00", "#FFFF00", "#FFFF00"
                                    , "#FFFF00", "#FFFF00", "#FFFF00", "#FFFF00", "#FFFF00", "#FFFF00", "#FFFF00"
                                    , "#FFFF00", "#FFFF00", "#FFFF00", "#FFFF00", "#FFFF00", "#FFFF00", "#FFFF00"
                                    , "#FFFF00", "#FFFF00", "#FFFF00")) +
