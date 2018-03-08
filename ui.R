@@ -67,9 +67,29 @@ my.ui <- fluidPage(theme = shinytheme("darkly"),
     
     
     
-    tabPanel("Table 2 [Josh]"
+    tabPanel("Passive Abilities",
+             h1("Passive Abilities"),
              
+             sidebarLayout(
+               sidebarPanel(
+                 selectInput("pokemonNames", "Enter a Pokemon Name", choices = abilities$Pokemon.Name),
+                 h4 ("or"),
+                 selectInput("only", "Enter a Passive Ability", choices = abilities$Passive.Abilities)
+               ),
+               mainPanel(
+                 textOutput("pokemonMessage"),
+                 tableOutput("abilities"),
+                 textOutput("abilitiesMessage"),
+                 tableOutput("pokemon.names")  
+                 
+                 
+               )
+             ) 
     ),
+    
+    
+    
+    
     
     ##################################
     ##### Workspace for Karan ########
@@ -77,7 +97,7 @@ my.ui <- fluidPage(theme = shinytheme("darkly"),
     
     tabPanel("Pokemon Search",
       h1("Pokemon Search!"),
-      
+
       sidebarLayout(
         sidebarPanel(
           selectInput("typeDropdown", "Choose a type:",
@@ -120,3 +140,5 @@ my.ui <- fluidPage(theme = shinytheme("darkly"),
 )        
 
 shinyUI(my.ui)
+
+shinyApp(ui=my.ui, server=my.server)

@@ -69,6 +69,8 @@ my.server <- function(input, output) {
   ##### Workspace for Karan ########
   ##################################
   
+
+  
   typeDropdown <- reactive({
     return(input$typeDropdown)
   })
@@ -99,13 +101,44 @@ my.server <- function(input, output) {
   })
   
   
-  
-  
-  
-  
   ##################################
   #### Workspace end for Karan #####
   ##################################
+  
+
+  # Josh data frames
+  pokemon.names <- (data.frame(pokemonNames))
+  abilities <- read.csv(file="data/PokemonAbilities.csv", stringsAsFactors=FALSE)
+  abilities$X <- NULL
+  names(abilities) <- c("ID", "Pokemon.Name", "Passive.Abilities")
+  abilities <- arrange(abilities, ID)
+  only <- abilities[, c("Passive.Abilities")]
+  
+  pokemonNames <- reactive ({
+    return(input$pokemonNames)
+  })
+  
+  output$pokemonMessage <- renderText({
+    return(paste("Passive abilities that can be found on", pokemonNames()))
+  })
+  
+  only <- reactive({
+    return(input$only)
+  })
+  
+  output$abilitiesMessage <- renderText({
+    return(paste("This table contains all of the pokemon that can potentially 
+                  have", only()))
+  })
+  
+  
+  output$abilities <- renderTable({
+    filtered.abilities <- subset(abilities, abilities$Pokemon.Name == input$pokemonNames)
+  })
+  
+  output$pokemon.names <- renderTable({
+    second.filtered <- subset(abilities, abilities$Passive.Abilities == input$only)
+  })
   
   output$pokemon.map <- renderPlot({
     kanto.region <- ggplot(map.plots, aes(x = x, y = y)) +
