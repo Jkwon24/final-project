@@ -1,7 +1,7 @@
 # Final Project Server File
 library("dplyr")
 library("png")
-#library("imager")
+library("imager")
 
 source("BaseStats.R") 
 
