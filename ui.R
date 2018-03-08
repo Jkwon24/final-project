@@ -5,7 +5,7 @@ library("rsconnect")
 library("shinythemes")
 library("ggplot2")
 library("png")
-#library("imager")
+library("imager")
 
 source("BaseStats.R") 
 
