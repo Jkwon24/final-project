@@ -4,7 +4,7 @@
 library("shinythemes")
 library("ggplot2")
 library("png")
-#library("imager")
+library("imager")
 
 source("BaseStats.R") 
 
@@ -197,6 +197,34 @@ my.ui <- fluidPage(theme = shinytheme("sandstone"),
                    Pokemon with a lower Pokemon ID.")
                )
              )
+    ),
+    
+    tabPanel("Pokemon Sprites",
+       sidebarLayout(
+         sidebarPanel(
+           textInput("spriteName", "Pokemon Name:")
+         ),
+         
+         mainPanel(
+           tabsetPanel(
+             tabPanel("Front",
+                imageOutput("frontSprite")
+              ),
+             
+              tabPanel("Back",
+                imageOutput("backSprite")
+              ),
+             
+              tabPanel("Shiny",
+                imageOutput("shinySprite")
+              ),
+             
+             tabPanel("Shiny",
+                      imageOutput("shinybackSprite")
+             )
+           )
+         )
+       )
     ),
     
     ##################################

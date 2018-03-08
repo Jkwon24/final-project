@@ -1,7 +1,7 @@
 # Final Project Server File
 library("dplyr")
 library("png")
-#library("imager")
+library("imager")
 
 source("BaseStats.R") 
 
@@ -183,9 +183,54 @@ my.server <- function(input, output) {
         return("No data here.")
       }
     }
-    
-
   })
+    
+    spriteSelected <- reactive({
+      sprite.selected <- filter(pokemonInfo, Name == input$spriteName) %>%
+                          select(ID)
+      return(sprite.selected[[1]])
+      
+    })
+    
+    output$frontSprite <- renderImage( deleteFile = FALSE,
+      return(list(
+        src = paste0("sprites/front/", spriteSelected(),".png"),
+        width = 300,
+        height = 300,
+        contentType = "image/png",
+        alt = "Front"
+      ))
+    )
+    
+    output$backSprite <- renderImage( deleteFile = FALSE,
+      return(list(
+        src = paste0("sprites/back/", spriteSelected(),".png"),
+        width = 300,
+        height = 300,
+        contentType = "image/png",
+        alt = "Back"
+      ))
+    )
+    
+    output$shinySprite <- renderImage( deleteFile = FALSE,
+      return(list(
+        src = paste0("sprites/shiny/", spriteSelected(),".png"),
+        width = 300,
+        height = 300,
+        contentType = "image/png",
+        alt = "Shiny"
+      ))
+    )
+    
+    output$shinybackSprite <- renderImage( deleteFile = FALSE,
+      return(list(
+        src = paste0("sprites/shinyback/", spriteSelected(),".png"),
+        width = 300,
+        height = 300,
+        contentType = "image/png",
+        alt = "ShinyBack"
+      ))
+    )
   
   ##################################
   #### Workspace end for Karan #####
